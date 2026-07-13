@@ -17,7 +17,7 @@ final class LinkValue
             return $value;
         }
 
-        if (is_array($value) && isset($value['url']) && is_string($value['url'])) {
+        if (is_array($value) && is_string($value['url'] ?? null)) {
             return $value['url'];
         }
 

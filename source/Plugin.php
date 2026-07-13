@@ -17,9 +17,9 @@ final class Plugin
          * Municipio has already selected the Manual Input layout and prepared component data at
          * this point, so the compatibility rule has enough context without replacing its views.
          */
-        add_filter(
-            'Modularity/Display/mod-manualinput/viewData',
-            [ViewData::class, 'hideNumericLegacyIconsOutsideBox'],
-        );
+        add_filter('Modularity/Display/mod-manualinput/viewData', [
+            ViewData::class,
+            'hideNumericLegacyIconsOutsideBox',
+        ]);
     }
 }

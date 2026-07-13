@@ -32,7 +32,8 @@ final class PluginTest extends TestCase
     public function testThePluginContainsNoActivationOrPostMetaWrites(): void
     {
         $plugin = file_get_contents(dirname(__DIR__) . '/modularity-manual-input-extensions.php');
-        $source = implode("\n", array_map('file_get_contents', glob(dirname(__DIR__) . '/source/*.php') ?: []));
+        $sourceFiles = glob(dirname(__DIR__) . '/source/*.php');
+        $source = implode("\n", array_map('file_get_contents', is_array($sourceFiles) ? $sourceFiles : []));
 
         static::assertIsString($plugin);
         static::assertStringNotContainsString('register_activation_hook', $plugin . $source);

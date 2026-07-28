@@ -14,19 +14,22 @@ final class PluginTest extends TestCase
         $GLOBALS['manual_input_extensions_test_filters'] = [];
     }
 
-    public function testItRegistersOnlyReadTimeFilters(): void
+    public function testItRegistersFieldCompatibilityFilters(): void
     {
         (new Plugin())->register();
+        $filters = $GLOBALS['manual_input_extensions_test_filters'];
 
         static::assertSame(
             [
                 'acf/load_field/key=field_64ff232ad91ba',
+                'acf/update_value',
                 'acf/format_value/key=field_64ff232ad91ba',
                 'Modularity/Display/mod-manualinput/viewData',
             ],
-            array_column($GLOBALS['manual_input_extensions_test_filters'], 0),
+            array_column($filters, 0),
         );
-        static::assertSame([10, 20, 10], array_column($GLOBALS['manual_input_extensions_test_filters'], 2));
+        static::assertSame([10, 5, 20, 10], array_column($filters, 2));
+        static::assertSame([1, 3, 1, 1], array_column($filters, 3));
     }
 
     public function testThePluginContainsNoActivationOrPostMetaWrites(): void

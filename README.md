@@ -13,6 +13,8 @@ deprecated standalone Modularity plugin.
   support for external links.
 - Existing URL strings and LTS link arrays are normalized to a URL string at
   read time. Raw post metadata is never rewritten.
+- Programmatic URL-string writes, including Municipio's Manual Input database
+  upgrade, are normalized to ACF Link arrays before ACF saves the value.
 - `link_text` remains the visible frontend label. Stored Link-field `title` and
   `target` values are preserved but not rendered by this release.
 - Numeric legacy `box_icon` values are hidden at render time outside the `box`
@@ -34,8 +36,10 @@ bundled with the theme.
 
 ## Data and deactivation
 
-No activation or write migration runs. Link arrays, including their `title`
-and `target`, and legacy icon metadata remain untouched in the database.
+No activation or write migration runs. Existing Link arrays, including their
+`title` and `target`, URL strings and legacy icon metadata remain untouched in
+the database. New URL strings written through ACF while the plugin is active
+are stored as ordinary Link arrays.
 
 The plugin is a permanent dependency while editors need the Link control and
 the read-time compatibility rules. Deactivation returns the field to
@@ -49,6 +53,9 @@ The plugin consumes these public ACF and Modularity filters:
 - `acf/load_field/key=field_64ff232ad91ba` changes only the field type and
   return format while preserving Municipio's labels, conditions, and other
   properties.
+- `acf/update_value` adapts programmatic URL-string writes for
+  `field_64ff232ad91ba` before ACF applies its type-specific Link updater and
+  leaves every other field and existing array unchanged.
 - `acf/format_value/key=field_64ff232ad91ba` guarantees that current URL strings
   and existing LTS arrays reach Municipio's controller as URL strings.
 - `Modularity/Display/mod-manualinput/viewData` suppresses only numeric legacy

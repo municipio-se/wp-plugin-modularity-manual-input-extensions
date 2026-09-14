@@ -1,8 +1,8 @@
 # Modularity Manual Input Extensions
 
 Modularity Manual Input Extensions ports focused editor and compatibility
-behavior from Municipio LTS to modern Municipio without restoring the
-deprecated standalone Modularity plugin.
+behavior from Municipio LTS to modern Municipio without restoring the deprecated
+standalone Modularity plugin.
 
 ## Supported first port
 
@@ -25,26 +25,30 @@ extensions, and write migrations are intentionally outside this release.
 
 ## Installation
 
+Release candidates, verification, publication and rollback are documented in
+[RELEASING.md](RELEASING.md). See [CHANGELOG.md](CHANGELOG.md) for version
+history.
+
 Install `municipio/wp-plugin-modularity-manual-input-extensions` with Composer.
 Composer Installers places it in
 `wp-content/plugins/modularity-manual-input-extensions` through
 `extra.installer-name`.
 
-The plugin supports modern Municipio only. The initial compatibility contract
-is verified against `helsingborg-stad/municipio` 6.43.2, where Modularity is
+The plugin supports modern Municipio only. The initial compatibility contract is
+verified against `helsingborg-stad/municipio` 6.43.2, where Modularity is
 bundled with the theme.
 
 ## Data and deactivation
 
 No activation or write migration runs. Existing Link arrays, including their
 `title` and `target`, URL strings and legacy icon metadata remain untouched in
-the database. New URL strings written through ACF while the plugin is active
-are stored as ordinary Link arrays.
+the database. New URL strings written through ACF while the plugin is active are
+stored as ordinary Link arrays.
 
-The plugin is a permanent dependency while editors need the Link control and
-the read-time compatibility rules. Deactivation returns the field to
-Municipio's URL control and disables array normalization and legacy-icon
-filtering; the stored metadata still remains intact.
+The plugin is a permanent dependency while editors need the Link control and the
+read-time compatibility rules. Deactivation returns the field to Municipio's URL
+control and disables array normalization and legacy-icon filtering; the stored
+metadata still remains intact.
 
 ## Extension points
 

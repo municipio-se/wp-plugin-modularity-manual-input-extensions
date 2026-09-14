@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Modularity Manual Input Extensions
  * Description: Adds focused Manual Input editor and compatibility behavior to modern Municipio.
- * Version: 0.1.0
+ * Version: 1.0.0
  * Requires PHP: 8.2
  * Author: Whitespace
  * License: MIT

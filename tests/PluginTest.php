@@ -24,12 +24,13 @@ final class PluginTest extends TestCase
                 'acf/load_field/key=field_64ff232ad91ba',
                 'acf/update_value',
                 'acf/format_value/key=field_64ff232ad91ba',
+                'acf/format_value/key=field_64ff22b2d91b7',
                 'Modularity/Display/mod-manualinput/viewData',
             ],
             array_column($filters, 0),
         );
-        static::assertSame([10, 5, 20, 10], array_column($filters, 2));
-        static::assertSame([1, 3, 1, 1], array_column($filters, 3));
+        static::assertSame([10, 5, 20, 20, 10], array_column($filters, 2));
+        static::assertSame([1, 3, 1, 3, 1], array_column($filters, 3));
     }
 
     public function testThePluginContainsNoActivationOrPostMetaWrites(): void

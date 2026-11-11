@@ -10,6 +10,7 @@ final class Plugin
 
     public function register(): void
     {
+        add_action('acf/input/admin_enqueue_scripts', [LinkPicker::class, 'enqueue']);
         add_filter('acf/load_field/key=' . self::LINK_FIELD_KEY, [Fields::class, 'enableLinkPicker']);
         add_filter('acf/update_value', [LinkValue::class, 'prepareForStorage'], 5, 3);
         add_filter('acf/format_value/key=' . self::LINK_FIELD_KEY, [LinkValue::class, 'format'], 20);

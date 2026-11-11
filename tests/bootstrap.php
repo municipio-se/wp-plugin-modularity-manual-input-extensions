@@ -12,3 +12,8 @@ function add_filter(string $hook, callable $callback, int $priority = 10, int $a
 }
 
 require dirname(__DIR__) . '/vendor/autoload.php';
+
+function add_action(string $hook, callable $callback, int $priority = 10, int $acceptedArgs = 1): void
+{
+    add_filter($hook, $callback, $priority, $acceptedArgs);
+}

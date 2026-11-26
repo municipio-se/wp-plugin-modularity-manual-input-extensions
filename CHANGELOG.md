@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 — 2026-11-26
+
+Expose each Manual Input row's saved link target while preserving the URL-only
+link contract and stored metadata. The unused link text field is hidden only
+for Manual Input; link titles remain intact when selecting internal pages.
+Rendering the selected target requires compatible Municipio and Component
+Library versions or the corresponding backports.
+
 ## 1.0.0 — 2026-09-17
 
 First stable release with independent semantic versioning.

@@ -15,12 +15,17 @@ standalone Modularity plugin.
   read time. Raw post metadata is never rewritten.
 - Programmatic URL-string writes, including Municipio's Manual Input database
   upgrade, are normalized to ACF Link arrays before ACF saves the value.
-- `link_text` remains the visible frontend label. Stored Link-field `title` and
-  `target` values are preserved but not rendered by this release.
+- `link_text` remains the visible frontend label. Stored Link-field `title`
+  values are preserved; the unused dialog label is hidden for Manual Input.
+- Saved link targets are exposed separately per row without changing the
+  URL-only link contract. Rendering them requires compatible Municipio and
+  Component Library code, such as the link-target backports for Municipio
+  6.43.3–6.43.4 and Component Library 5.10.0. Upstream releases 7.88.13 and
+  5.47.7 respectively include those fixes.
 - Numeric legacy `box_icon` values are hidden at render time outside the `box`
   layout. Valid icon names and every icon value in `box` remain unchanged.
 
-Custom Blade views, link title or target rendering, other Manual Input
+Custom Blade views, link title rendering, other Manual Input
 extensions, and write migrations are intentionally outside this release.
 
 ## Installation
